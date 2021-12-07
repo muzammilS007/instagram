@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:instagram/ui/home/home_screen.dart';
+import 'package:instagram/ui/login/login_screen.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,8 +26,6 @@ const MaterialColor kPrimaryColor = const MaterialColor(
 );
 
 class MyApp extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,9 +34,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: kPrimaryColor,
         splashColor: kPrimaryColor,
       ),
-      home: MainContentScreen()
+      builder: (context, widget) =>
+          ResponsiveWrapper.builder(LoginScreen(),
+              maxWidth: 1200,
+              minWidth: 480,
+              defaultScale: true,
+              breakpoints: [
+                ResponsiveBreakpoint.resize(480, name: MOBILE),
+                ResponsiveBreakpoint.autoScale(800, name: TABLET),
+                ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+              ],
+              background: Container(color: Color(0xFFF5F5F5))),
     );
   }
 }
-
-
