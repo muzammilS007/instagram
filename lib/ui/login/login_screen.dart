@@ -14,17 +14,17 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
       onModelReady: (viewModel) => viewModel.initialise(),
-      builder: (context, viewModel, child) => loginUi(context,viewModel),
+      builder: (context, viewModel, child) => loginUi(context, viewModel),
     );
   }
 }
-Widget loginUi(BuildContext context, [LoginViewModel viewModel])
-{
-  final inputBorder = OutlineInputBorder(borderSide: Divider.createBorderSide(context));
+
+Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
+  final inputBorder =
+      OutlineInputBorder(borderSide: Divider.createBorderSide(context));
   return Scaffold(
     body: SafeArea(
       child: Container(
@@ -53,10 +53,14 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel])
               height: 64,
             ),
             TextFormField(
-                controller: viewModel.emailOrUsername.textEditingController,
 
+              controller: viewModel.emailOrUsername.textEditingController,
               decoration: InputDecoration(
-                errorText: viewModel.emailOrUsername.validate != null ? viewModel.emailOrUsername.validate : null ,
+                errorText: viewModel.emailOrUsername.validate != null
+                    ? viewModel.emailOrUsername.validate
+                    : null,
+                errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red)),
                 hintText: 'email or username',
                 border: inputBorder,
                 focusedBorder: inputBorder,
@@ -64,12 +68,22 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel])
                 filled: true,
                 contentPadding: EdgeInsets.all(8),
               ),
+              textAlign: TextAlign.start,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.text,
+              autocorrect: false,
             ),
             SizedBox(
               height: 24,
             ),
             TextFormField(
+              controller: viewModel.password.textEditingController,
               decoration: InputDecoration(
+                  errorText: viewModel.password.validate != null
+                      ? viewModel.password.validate
+                      : null,
+                  errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red)),
                   hintText: 'password',
                   border: inputBorder,
                   focusedBorder: inputBorder,
@@ -81,9 +95,12 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel])
             SizedBox(
               height: 24,
             ),
-            GestureDetector(
+            InkWell(
               onTap: ()=>{
-                print("button press")
+                viewModel.updateState(() => {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MainContent()))
+                })
               },
               child: Container(
                 child: Text(
@@ -112,10 +129,8 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel])
             ),
             Text(
               'Forgot for login details? get help signing in',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  ?.copyWith(fontSize: 10),
+              style:
+                  Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 10),
             ),
             Flexible(
               child: Container(),

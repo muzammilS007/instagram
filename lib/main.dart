@@ -34,7 +34,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: kPrimaryColor,
         splashColor: kPrimaryColor,
       ),
-      builder: (context, widget) =>
+      home: LoginScreen(),
+/*      builder: (context, widget) =>
           ResponsiveWrapper.builder(LoginScreen(),
               maxWidth: 1200,
               minWidth: 480,
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
                 ResponsiveBreakpoint.autoScale(800, name: TABLET),
                 ResponsiveBreakpoint.resize(1000, name: DESKTOP),
               ],
-              background: Container(color: Color(0xFFF5F5F5))),
+              background: Container(color: Color(0xFFF5F5F5))),*/
     );
   }
 }

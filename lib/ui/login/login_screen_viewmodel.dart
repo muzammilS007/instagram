@@ -13,7 +13,7 @@ class LoginViewModel with ChangeNotifier {
 
   }
 
-  void updateState() {
+  void updateState(Function() movenext) {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(emailOrUsername.text);
@@ -21,8 +21,14 @@ class LoginViewModel with ChangeNotifier {
       emailOrUsername.validate = "Invalid email";
       notifyListeners();
     } else if (password.text != "1234") {
-      emailOrUsername.validate = "Invalid password";
+      password.validate = "Wrong password";
       notifyListeners();
+    }
+    else{
+      emailOrUsername.validate = null;
+      password.validate = null;
+      notifyListeners();
+      movenext();
     }
   }
 
