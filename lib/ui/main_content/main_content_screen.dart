@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:instagram/ui/account/account_page.dart';
 import 'package:instagram/ui/home/home_screen.dart';
+import 'package:instagram/ui/post/post_screen.dart';
 import 'package:instagram/ui/search/search_screen.dart';
 import 'package:instagram/utils/constants.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -23,7 +24,7 @@ class MainContentScreen extends StatefulWidget {
     return [
       HomeScreen(),
       SearchScreen(),
-      SearchScreen(),
+      PostScreen(),
       SearchScreen(),
       AccountPage(),
     ];
@@ -54,8 +55,8 @@ class _MainContentScreenState extends State<MainContentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: index==4 ? -1 : 50,
+/*      appBar: AppBar(
+
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
         backgroundColor: Colors.black,
@@ -69,7 +70,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
         actions: [
           IconButton(onPressed: () => {}, icon: Icon(Icons.add_comment))
         ],
-      ),
+      ),*/
       body: widget._buildScreens()[index],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

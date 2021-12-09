@@ -3,12 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:instagram/ui/home/home_screen.dart';
 import 'package:instagram/ui/login/login_screen.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
+import 'package:instagram/utils/share_pref.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 const MaterialColor kPrimaryColor = const MaterialColor(
   0xFF011723,
   const <int, Color>{
@@ -26,26 +28,39 @@ const MaterialColor kPrimaryColor = const MaterialColor(
 );
 
 class MyApp extends StatelessWidget {
+  SharePref _sharePref = SharePref();
+
   @override
   Widget build(BuildContext context) {
+    _sharePref.initialize();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: kPrimaryColor,
         splashColor: kPrimaryColor,
       ),
-      home: LoginScreen(),
-/*      builder: (context, widget) =>
-          ResponsiveWrapper.builder(LoginScreen(),
-              maxWidth: 1200,
-              minWidth: 480,
-              defaultScale: true,
-              breakpoints: [
-                ResponsiveBreakpoint.resize(480, name: MOBILE),
-                ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-              ],
-              background: Container(color: Color(0xFFF5F5F5))),*/
+      home: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarColor: Colors.black),
+        ),
+        body: FutureBuilder<bool>(
+          future: _sharePref.getLoginStatus(),
+          builder: (context,snapshot){
+             if(snapshot.hasData)
+               {
+                 return snapshot.data ? MainContent()  :  LoginScreen();
+               }
+             else{
+               return LoginScreen();
+             }
+
+          },
+        ),
+      ),
     );
   }
 }
