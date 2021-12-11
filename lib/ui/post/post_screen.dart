@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/utils/dialog_helper.dart';
 import 'package:photo_view/photo_view.dart';
 
 
@@ -50,12 +51,10 @@ class PostScreen extends StatelessWidget {
                                   icon: Icon(Icons.zoom_out_map, size: 16, color: Colors.white,),
                                   onPressed: (){
 
-
                                     showDialog(
                                       context: context,
-                                      builder: (BuildContext context) => showOverlayImage(),
+                                    builder: (BuildContext context) => showOverlayImage("assets/sample/search_demo1.jpg"),
                                     );
-
 
                                   }),
                               decoration: decoration
@@ -119,36 +118,3 @@ class PostScreen extends StatelessWidget {
   }
 }
 
-Widget showOverlayImage(){
-
-  return Dialog(
-    backgroundColor: Colors.black,
-
-
-    child: Card(
-      elevation: 8,
-      child: PhotoView(
-        imageProvider: AssetImage("assets/sample/search_demo1.jpg"),
-      ),
-    ),
-  );
-}
-
-Widget buildPopupDialog(BuildContext context) {
-  return new AlertDialog(
-    content: SizedBox(
-      height : double.infinity,
-      width: double.infinity,
-      child: Image.asset("assets/sample/search_demo1.jpg", fit: BoxFit.fill,),
-    ),
-    actions: <Widget>[
-      new FlatButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        textColor: Theme.of(context).primaryColor,
-        child: const Text('Close'),
-      ),
-    ],
-  );
-}

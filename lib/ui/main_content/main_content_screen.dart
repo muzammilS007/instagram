@@ -96,7 +96,7 @@ class _MainContentScreenState extends State<MainContentScreen> {
                     ),
                     Visibility(
                       visible: index==0 ? true : false,
-                      child: Container(
+                      child: Divider(
                         height: 2,
                         color: Colors.blue,
                       ),
