@@ -27,25 +27,35 @@ class HomeScreen extends StatelessWidget {
         builder: (context, viewmodel, child) {
           return Scaffold(
             appBar: HeaderWidget(),
-            body: Container(
-              child: Column(
-                children: <Widget>[
-                  HomeStoryWidget(),
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) {
-                        return FeedWidget(
-                          feeds: viewmodel.getFeed(),
-                        );
-                      }),
-                ],
-              ),
-            ),
+            body: ListView.builder(
+                itemCount: 6,
+                itemBuilder: (BuildContext context, int index) {
+                  return index==0 ? HomeStoryWidget(): FeedWidget(
+                    feeds: viewmodel.getFeed(),
+                  );
+                }),
           );
         });
   }
 }
+
+/*
+Container(
+child: Column(
+children: <Widget>[
+//SizedBox(child: HomeStoryWidget()),
+ListView.builder(
+itemCount: 5,
+itemBuilder: (BuildContext context, int index) {
+return index==0 ? HomeStoryWidget(): FeedWidget(
+feeds: viewmodel.getFeed(),
+);
+}),
+],
+),
+),
+*/
+
 
 /*class HomeScreen extends StatefulWidget {
   Feeds feeds = new Feeds();
