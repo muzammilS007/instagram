@@ -27,21 +27,19 @@ class HomeScreen extends StatelessWidget {
         builder: (context, viewmodel, child) {
           return Scaffold(
             appBar: HeaderWidget(),
-            body: SingleChildScrollView(
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    HomeStoryWidget(),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int index) {
-                          return FeedWidget(
-                            feeds: viewmodel.getFeed(),
-                          );
-                        }),
-                  ],
-                ),
+            body: Container(
+              child: Column(
+                children: <Widget>[
+                  HomeStoryWidget(),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return FeedWidget(
+                          feeds: viewmodel.getFeed(),
+                        );
+                      }),
+                ],
               ),
             ),
           );
