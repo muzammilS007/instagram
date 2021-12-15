@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
+import 'package:instagram/ui/signup/sign_up_screen.dart';
 import 'package:instagram/utils/share_pref.dart';
 import 'package:stacked/stacked.dart';
 
@@ -137,12 +138,18 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                   Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 10),
                 ),
 
-                Container(
-                  child: Text(
-                    'Don\'t have an account? sign up',
-                    style: Theme.of(context).textTheme.bodyText1,
+                GestureDetector(
+                  onTap: ()=>{
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()))
+                  },
+                  child: Container(
+                    child: Text(
+                      'Don\'t have an account? sign up',
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 8),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 8),
                 ),
               ],
             ),
