@@ -6,6 +6,7 @@ import 'package:instagram/ui/home/home_screen.dart';
 import 'package:instagram/ui/post/post_screen.dart';
 import 'package:instagram/ui/search/search_screen.dart';
 import 'package:instagram/utils/constants.dart';
+import 'package:instagram/utils/permission_helper.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class MainContent extends StatelessWidget {
@@ -37,7 +38,6 @@ class MainContentScreen extends StatefulWidget {
 class _MainContentScreenState extends State<MainContentScreen> {
   int index = 0;
 
-
   @override
   void initState() {
 /*    setState(() {
@@ -48,7 +48,6 @@ class _MainContentScreenState extends State<MainContentScreen> {
   void onTap(int index) {
     setState(() {
       this.index = index;
-
     });
   }
 
@@ -74,10 +73,9 @@ class _MainContentScreenState extends State<MainContentScreen> {
       body: widget._buildScreens()[index],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: const Color(0xffe8e2e2),
-
-          borderRadius: BorderRadius.horizontal(left: Radius.circular(20) , right: Radius.circular(20))
-        ),
+            color: const Color(0xffe8e2e2),
+            borderRadius: BorderRadius.horizontal(
+                left: Radius.circular(20), right: Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -91,11 +89,11 @@ class _MainContentScreenState extends State<MainContentScreen> {
                       iconSize: 30,
                       icon: Icon(
                         Icons.home,
-                        color: index==0 ? Colors.blue : Colors.black,
+                        color: index == 0 ? Colors.blue : Colors.black,
                       ),
                     ),
                     Visibility(
-                      visible: index==0 ? true : false,
+                      visible: index == 0 ? true : false,
                       child: Divider(
                         height: 2,
                         color: Colors.blue,
@@ -113,11 +111,11 @@ class _MainContentScreenState extends State<MainContentScreen> {
                       iconSize: 30,
                       icon: Icon(
                         Icons.search,
-                        color: index==1 ? Colors.blue : Colors.black,
+                        color: index == 1 ? Colors.blue : Colors.black,
                       ),
                     ),
                     Visibility(
-                      visible: index==1 ? true : false,
+                      visible: index == 1 ? true : false,
                       child: Container(
                         height: 2,
                         color: Colors.blue,
@@ -131,15 +129,21 @@ class _MainContentScreenState extends State<MainContentScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      onPressed: () => {onTap(2)},
+                      onPressed: () =>
+                      {
+                        checkPermission(() => {
+                        onTap(2)
+                        }),
+
+                      },
                       iconSize: 30,
                       icon: Icon(
                         Icons.add_box,
-                        color: index==2 ? Colors.blue : Colors.black,
+                        color: index == 2 ? Colors.blue : Colors.black,
                       ),
                     ),
                     Visibility(
-                      visible: index==2 ? true : false,
+                      visible: index == 2 ? true : false,
                       child: Container(
                         height: 2,
                         color: Colors.blue,
@@ -157,11 +161,11 @@ class _MainContentScreenState extends State<MainContentScreen> {
                       iconSize: 30,
                       icon: Icon(
                         Icons.favorite,
-                        color: index==3 ? Colors.blue : Colors.black,
+                        color: index == 3 ? Colors.blue : Colors.black,
                       ),
                     ),
                     Visibility(
-                      visible: index==3 ? true : false,
+                      visible: index == 3 ? true : false,
                       child: Container(
                         height: 2,
                         color: Colors.blue,
@@ -179,11 +183,11 @@ class _MainContentScreenState extends State<MainContentScreen> {
                       iconSize: 30,
                       icon: Icon(
                         Icons.person,
-                        color: index==4 ? Colors.blue : Colors.black,
+                        color: index == 4 ? Colors.blue : Colors.black,
                       ),
                     ),
                     Visibility(
-                      visible: index==4 ? true : false,
+                      visible: index == 4 ? true : false,
                       child: Container(
                         height: 2,
                         color: Colors.blue,
