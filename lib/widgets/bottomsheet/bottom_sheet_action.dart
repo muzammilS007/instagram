@@ -9,9 +9,12 @@ class BottomSheetAction {
 
   int id;
 
+  Color colors=Color(0xFF030303);
+
   BottomSheetAction({
      this.iconData,
      this.title,
      this.id,
+    this.colors
   });
 }

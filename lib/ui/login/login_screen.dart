@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/ui/signup/sign_up_screen.dart';
@@ -99,7 +98,7 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                 SizedBox(
                   height: 22,
                 ),
-                InkWell(
+                GestureDetector(
                   onTap: ()=>{
                     viewModel.updateState(() => {
                       sharePref.setLoginStatus(true),

@@ -34,7 +34,12 @@ class _AccountPageState extends State<AccountPage> {
             iconData: Icons.bookmark_border, title: 'Saved', id: 5),
         BottomSheetAction(
             iconData: Icons.group_add, title: 'Discover People', id: 6),
+        BottomSheetAction(
+            iconData: IconData(0xe3b3, fontFamily: 'MaterialIcons'), title: 'Logout', id: 7,colors: Color(
+            0xFFEF0505)),
+
       ]);
+
     };
   }
 
