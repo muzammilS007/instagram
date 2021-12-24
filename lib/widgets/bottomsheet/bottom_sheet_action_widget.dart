@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/app_context.dart';
 import 'package:instagram/ui/login/login_screen.dart';
 import 'package:instagram/utils/share_pref.dart';
 import 'package:instagram/widgets/bottomsheet/bottom_sheet_action.dart';
 
 class BottomSheetActionWidget extends StatelessWidget {
   final BottomSheetAction action;
+  final Function onClicks;
+  BottomSheetActionWidget({this.action , this.onClicks});
 
-  BottomSheetActionWidget(this.action);
 
-  SharePref sharePref = new SharePref();
 
   @override
   Widget build(BuildContext context) {
@@ -29,45 +28,8 @@ class BottomSheetActionWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        switch (action.id) {
-          case 1:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 2:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 3:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 4:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 5:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 6:
-            {
-              Navigator.pop(context, action);
-              break;
-            }
-          case 7:
-            {
-              sharePref.setLoginStatus(false);
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
-              break;
-            }
-        }
+        onClicks();
+
       },
     );
   }

@@ -7,7 +7,34 @@ import 'package:instagram/ui/post/post_screen.dart';
 import 'package:instagram/ui/search/search_screen.dart';
 import 'package:instagram/utils/constants.dart';
 import 'package:instagram/utils/permission_helper.dart';
+import 'package:instagram/utils/themes.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+class MyApp extends StatelessWidget {
+//  final _sharePref = SharePref();
+
+  @override
+  Widget build(BuildContext context) {
+    // _sharePref.initialize();
+
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: kPrimaryColor,
+          splashColor: kPrimaryColor,
+        ),
+        home: MainContent());
+    /*return Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          systemOverlayStyle:
+              SystemUiOverlayStyle(statusBarColor: Colors.black),
+        ),
+        body: MainContent());*/
+  }
+}
 
 class MainContent extends StatelessWidget {
   const MainContent({Key key}) : super(key: key);

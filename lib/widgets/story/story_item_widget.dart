@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 class StoryItemWidget extends StatefulWidget {
   static const ROUTE_NAME = 'StoryItemWidget';
@@ -8,7 +7,6 @@ class StoryItemWidget extends StatefulWidget {
 }
 
 class _StoryItemWidgetState extends State<StoryItemWidget> {
-  static const TAG = 'StoryItemWidget';
   @override
   Widget build(BuildContext context) {
     return InkWell(

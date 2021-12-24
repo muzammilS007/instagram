@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/main.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/ui/signup/sign_up_screen.dart';
+import 'package:instagram/utils/navegation_helper.dart';
 import 'package:instagram/utils/share_pref.dart';
+import 'package:instagram/utils/themes.dart';
 import 'package:stacked/stacked.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key key}) : super(key: key);
 
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
@@ -24,16 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
-  final sharePref =SharePref();
+  final sharePref = SharePref();
   final inputBorder =
       OutlineInputBorder(borderSide: Divider.createBorderSide(context));
-  return SafeArea(
 
-    child: Center(
+  return Scaffold(
+    body: Center(
       child: SingleChildScrollView(
-
         child: Container(
-
           padding: EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: Padding(
@@ -41,13 +39,11 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-
                 SvgPicture.asset(
                   'assets/icons/ic_instagram.svg',
                   color: Colors.black,
                   height: 32,
                 ),
-
                 Text(
                   'Sign in and use more feature',
                   style: Theme.of(context).textTheme.subtitle1,
@@ -56,7 +52,6 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                   height: 64,
                 ),
                 TextFormField(
-
                   controller: viewModel.emailOrUsername.textEditingController,
                   decoration: InputDecoration(
                     errorText: viewModel.emailOrUsername.validate != null
@@ -99,12 +94,14 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                   height: 22,
                 ),
                 GestureDetector(
-                  onTap: ()=>{
+                  onTap: () => {
                     viewModel.updateState(() => {
-                      sharePref.setLoginStatus(true),
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => MainContent()))
-                    })
+                          sharePref.setLoginStatus(true),
+                           MoveToDestinationAndRemoveStack(context).moveDestination(MyApp())
+       /*                   Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => MyApp()),
+                              (Route<dynamic> route) => false),*/
+                        })
                   },
                   child: Container(
                     child: Text(
@@ -133,12 +130,13 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                 ),
                 Text(
                   'Forgot for login details? get help signing in',
-                  style:
-                  Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 10),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(fontSize: 10),
                 ),
-
                 GestureDetector(
-                  onTap: ()=>{
+                  onTap: () => {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUpScreen()))
                   },

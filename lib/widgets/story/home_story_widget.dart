@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import 'story_item_widget.dart';
 
@@ -10,7 +9,6 @@ class HomeStoryWidget extends StatefulWidget {
 }
 
 class _HomeStoryWidgetState extends State<HomeStoryWidget> {
-  static const TAG = 'HomeStoryWidget';
   @override
   Widget build(BuildContext context) {
     return Container(

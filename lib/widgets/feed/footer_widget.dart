@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram/callbacks/feed_footer/feed_footer_callbacks.dart';
-import 'dart:developer' as developer;
 
 import 'package:instagram/res/icons_app.dart';
 
