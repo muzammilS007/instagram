@@ -11,7 +11,7 @@ class Database {
     firestore = FirebaseFirestore.instance;
   }
 
-  void firebaseDbListnear(Function(bool) res)
+  void firebaseDbListner(Function(bool) res)
   {
     CollectionReference reference = firestore.collection('todo_info');
     reference.snapshots().listen((querySnapshot) {
