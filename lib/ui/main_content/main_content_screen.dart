@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:instagram/ui/account/account_page.dart';
 import 'package:instagram/ui/home/home_screen.dart';
 import 'package:instagram/ui/post/post_screen.dart';
 import 'package:instagram/ui/search/search_screen.dart';
-import 'package:instagram/utils/constants.dart';
 import 'package:instagram/utils/permission_helper.dart';
 import 'package:instagram/utils/themes.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class MyApp extends StatelessWidget {
 //  final _sharePref = SharePref();
