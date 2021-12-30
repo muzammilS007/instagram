@@ -17,14 +17,14 @@ class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.width ?? Constants.AVATAR_WIDTH_DEFAULT,
-      height: widget.height ?? Constants.AVATAR_HEIGHT_DEFAULT,
+      width: widget.width ?? Constants.avatarWidthDefault,
+      height: widget.height ?? Constants.avatarHeightDefault,
       child: Stack(
         children: <Widget>[
           Positioned.fill(
               child: CircleAvatar(
             backgroundImage: AssetImage(
-                '${widget.imagePath ?? Constants.DEFAULT_AVATAR_PLACEHOLDER}'),
+                '${widget.imagePath ?? Constants.defaultAvatarPlaceholder}'),
           )),
           Positioned(
             child: ClipOval(

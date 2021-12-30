@@ -7,6 +7,11 @@ extension  MoveToDestinationAndRemoveStack on BuildContext{
      destinationClass), (Route<dynamic> route) => false);
 
    }
+   void pushNavigation(dynamic destinationClass)
+   {
+     Navigator.push(this,
+         MaterialPageRoute(builder: (context) => destinationClass));
 
+   }
 
 }

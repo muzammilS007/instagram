@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/ui/account/big_avatar_user_widget.dart';
+import 'package:instagram/ui/camera/custom_camera.dart';
 import 'package:instagram/ui/signup/sign_up_viewmodel.dart';
+import 'package:instagram/utils/constants.dart';
+import 'package:instagram/utils/navegation_helper.dart';
+import 'package:instagram/widgets/drop_down.dart';
+import 'package:instagram/widgets/input_fields/password_field.dart';
+import 'package:instagram/widgets/input_fields/text_field.dart';
 import 'package:stacked/stacked.dart';
 
 class SignUpScreen extends StatelessWidget {
-  final signupviewmodel = SignUpViewModel();
+  final signupViewmodel = SignUpViewModel();
 
   SignUpScreen({Key key}) : super(key: key);
   final StepperType stepperType = StepperType.vertical;
@@ -32,7 +38,9 @@ class SignUpScreen extends StatelessWidget {
                       currentStep: viewmodel.currentStep,
                       onStepTapped: (step) => {viewmodel.tapped(step)},
                       onStepContinue: () => {
-                        viewmodel.updateState(() => {viewmodel.continued()})
+                        viewmodel.updateState(() => {
+                              viewmodel.continued(),
+                            })
                       },
                       onStepCancel: viewmodel.cancel,
                       steps: <Step>[
@@ -40,71 +48,22 @@ class SignUpScreen extends StatelessWidget {
                           title: new Text('Account'),
                           content: Column(
                             children: <Widget>[
-                              TextFormField(
-                                controller:
-                                    viewmodel.email.textEditingController,
-                                decoration: InputDecoration(
-                                  errorText: viewmodel.email.validate != null
-                                      ? viewmodel.email.validate
-                                      : null,
-                                  errorBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.red)),
-                                  hintText: 'email or username',
-                                  border: inputBorder,
-                                  focusedBorder: inputBorder,
-                                  enabledBorder: inputBorder,
-                                  filled: true,
-                                  contentPadding: EdgeInsets.all(8),
-                                ),
-                                textAlign: TextAlign.start,
-                                textInputAction: TextInputAction.done,
-                                keyboardType: TextInputType.text,
-                                autocorrect: false,
+                              TextFieldCustom(
+                                  textEditingController: viewmodel.email,
+                                  hintTxt: Constants.labelEmail),
+                              Divider(
+                                height: 22,
+                              ),
+                              PasswordCustomField(
+                                textEditingController: viewmodel.password,
+                                hintTxt: Constants.labelPassword,
                               ),
                               Divider(
                                 height: 22,
                               ),
-                              TextFormField(
-                                controller:
-                                    viewmodel.password.textEditingController,
-                                decoration: InputDecoration(
-                                    errorText:
-                                        viewmodel.password.validate != null
-                                            ? viewmodel.password.validate
-                                            : null,
-                                    errorBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.red)),
-                                    hintText: 'password',
-                                    border: inputBorder,
-                                    focusedBorder: inputBorder,
-                                    enabledBorder: inputBorder,
-                                    filled: true,
-                                    contentPadding: EdgeInsets.all(8)),
-                                obscureText: true,
-                              ),
-                              Divider(
-                                height: 22,
-                              ),
-                              TextFormField(
-                                controller:
-                                    viewmodel.cPassword.textEditingController,
-                                decoration: InputDecoration(
-                                    errorText:
-                                        viewmodel.cPassword.validate != null
-                                            ? viewmodel.cPassword.validate
-                                            : null,
-                                    errorBorder: OutlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.red)),
-                                    hintText: 'Confirm Password',
-                                    border: inputBorder,
-                                    focusedBorder: inputBorder,
-                                    enabledBorder: inputBorder,
-                                    filled: true,
-                                    contentPadding: EdgeInsets.all(8)),
-                                obscureText: true,
+                              PasswordCustomField(
+                                textEditingController: viewmodel.cPassword,
+                                hintTxt: Constants.labelConfirmPassword,
                               ),
                               Divider(
                                 height: 22,
@@ -120,15 +79,27 @@ class SignUpScreen extends StatelessWidget {
                           title: new Text('Personal Info'),
                           content: Column(
                             children: <Widget>[
-                              TextFormField(
-                                decoration: InputDecoration(labelText: 'Name'),
+                              TextFieldCustom(
+                                  textEditingController: viewmodel.name,
+                                  hintTxt: Constants.labelName),
+                              Divider(
+                                height: 22,
                               ),
-                              Text("Gender"),
-                              componentRadioButton(context),
-                              TextFormField(
-                                decoration:
-                                    InputDecoration(labelText: 'Postcode'),
+                              DropDownCustom(
+                                items: ["Male", "Female"],
+                                onClick: (value) =>
+                                    {viewmodel.setGender(value)},
                               ),
+                              /*            Text("Gender",),
+                              componentRadioButton(context, viewmodel),*/
+                              Divider(
+                                height: 22,
+                              ),
+                              TextFieldCustom(
+                                  showIcon: true,
+                                  onClick: () => {},
+                                  textEditingController: viewmodel.location,
+                                  hintTxt: Constants.labelLocation),
                             ],
                           ),
                           isActive: viewmodel.currentStep >= 0,
@@ -141,10 +112,20 @@ class SignUpScreen extends StatelessWidget {
                           content: Center(
                             child: Column(
                               children: <Widget>[
-                                BigAvatarUserWidget(height:100.0,width: 100.0,click:()=>{}),
+                                BigAvatarUserWidget(
+                                    height: 100.0,
+                                    width: 100.0,
+                                    click: () => {
+                                      MoveToDestinationAndRemoveStack(context).pushNavigation(CameraScreen()),
+
+                                    }),
                                 Padding(
                                   padding: EdgeInsets.only(top: 8),
-                                  child: Text('${viewmodel.name?? 'Muzammil Zafar'}', style: Theme.of(context).textTheme.bodyText2,),
+                                  child: Text(
+                                    "${viewmodel.name.text}",
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
                                 )
                               ],
                             ),
@@ -162,25 +143,5 @@ class SignUpScreen extends StatelessWidget {
             ),
           );
         });
-  }
-
-  Widget componentRadioButton(BuildContext context) {
-    List groupValue = ["Male", "Female"];
-    String value;
-    return Column(
-      children: <Widget>[
-        for (int i = 1; i <= 5; i++)
-          ListTile(
-              title: Text(
-                'Radio $i',
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    .copyWith(color: i == 5 ? Colors.black38 : Colors.black),
-              ),
-              leading: Radio(
-                  value: value, groupValue: groupValue, onChanged: (v) => {})),
-      ],
-    );
   }
 }

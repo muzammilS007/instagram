@@ -1,8 +1,16 @@
 class Constants {
-  static final String APP_NAME = "Instagram";
-  static final String DEFAULT_AVATAR_PLACEHOLDER = 'assets/sample/ic_avatar_1.jpg';
-  static final double AVATAR_HEIGHT_DEFAULT = 80;
-  static final double AVATAR_WIDTH_DEFAULT = 80;
+  static final String appName = "Instagram";
+  static final String defaultAvatarPlaceholder = 'assets/sample/ic_avatar_1.jpg';
+  static final double avatarHeightDefault = 80;
+  static final double avatarWidthDefault = 80;
+  // in Sign Up Screen
+  static final String labelEmail="email or username";
+  static final String labelPassword="Password";
+  static final String labelConfirmPassword="Confirm Password";
+  static final String labelName="Name";
+
+  static var labelLocation="Location";
+
 
 
 }

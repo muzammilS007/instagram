@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/repository/live_repository/auth.dart';
 import 'package:instagram/utils/text_field_validator.dart';
 
 class SignUpViewModel with ChangeNotifier {
@@ -11,8 +12,21 @@ class SignUpViewModel with ChangeNotifier {
   //for personal info
   TextFieldValidator name = TextFieldValidator();
   TextFieldValidator location = TextFieldValidator();
+  String gender;
 
+  // for user pic
+  String imagePath;
 
+  setGender(String gender)
+  {
+    this.gender=gender;
+    notifyListeners();
+  }
+  setImagePath(String imagePath)
+  {
+    this.imagePath=imagePath;
+    notifyListeners();
+  }
 
   tapped(int step) {
     currentStep = step;
@@ -28,7 +42,7 @@ class SignUpViewModel with ChangeNotifier {
     currentStep > 0 ? currentStep -= 1 : null;
   }
 
-  void updateState(Function() movenext) {
+  void updateState(Function() moveNext) {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email.text);
@@ -52,8 +66,15 @@ class SignUpViewModel with ChangeNotifier {
       password.validate = null;
       cPassword.validate = null;
       notifyListeners();
-      movenext();
+      moveNext();
     }
+  }
+
+
+  void signUp()
+  {
+    var auth = new Auth();
+    //auth.handleSignUp()
   }
 
   @override
