@@ -1,4 +1,11 @@
+import 'package:flutter/services.dart';
+
 class Constants {
+
+  //Method channel
+  static const platform = const MethodChannel("test_activity");
+
+
   static final String appName = "Instagram";
   static final String defaultAvatarPlaceholder = 'assets/sample/ic_avatar_1.jpg';
   static final double avatarHeightDefault = 80;

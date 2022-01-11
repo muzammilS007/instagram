@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/ui/account/big_avatar_user_widget.dart';
-import 'package:instagram/ui/camera/custom_camera.dart';
 import 'package:instagram/ui/signup/sign_up_viewmodel.dart';
 import 'package:instagram/utils/constants.dart';
-import 'package:instagram/utils/navegation_helper.dart';
 import 'package:instagram/widgets/drop_down.dart';
 import 'package:instagram/widgets/input_fields/password_field.dart';
 import 'package:instagram/widgets/input_fields/text_field.dart';
 import 'package:stacked/stacked.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
+
+
+getNewActivity() async {
+  try {
+    var result = await Constants.platform
+        .invokeMethod('startNewActivity')
+        .then((value) => {print(value)});
+    //print(result);
+  } on PlatformException catch (e) {
+    print(e.message);
+  }
+}
 
 class SignUpScreen extends StatelessWidget {
   final signupViewmodel = SignUpViewModel();
@@ -116,9 +128,10 @@ class SignUpScreen extends StatelessWidget {
                                     height: 100.0,
                                     width: 100.0,
                                     click: () => {
-                                      MoveToDestinationAndRemoveStack(context).pushNavigation(CameraScreen()),
-
-                                    }),
+                                          //Todo method channel implemented here
+                                          getNewActivity()
+                                          // MoveToDestinationAndRemoveStack(context).pushNavigation(CameraScreen()),
+                                        }),
                                 Padding(
                                   padding: EdgeInsets.only(top: 8),
                                   child: Text(
