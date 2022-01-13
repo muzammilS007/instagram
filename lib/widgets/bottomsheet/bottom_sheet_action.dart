@@ -3,18 +3,18 @@ import 'package:flutter/cupertino.dart';
 class BottomSheetAction {
   static const TAG = 'BottomSheetAction';
 
-  IconData iconData;
+  IconData? iconData;
 
-  String title;
+  String? title;
 
-  int id;
+  int? id;
 
-  Color colors=Color(0xFF030303);
+  Color colors;
 
   BottomSheetAction({
      this.iconData,
      this.title,
      this.id,
-    this.colors
+    this.colors= const Color(0xFF030303)
   });
 }

@@ -4,8 +4,8 @@ import 'package:instagram/utils/share_pref.dart';
 import 'package:instagram/widgets/bottomsheet/bottom_sheet_action.dart';
 
 class BottomSheetActionWidget extends StatelessWidget {
-  final BottomSheetAction action;
-  final Function onClicks;
+  final BottomSheetAction? action;
+  final Function? onClicks;
   BottomSheetActionWidget({this.action , this.onClicks});
 
 
@@ -19,16 +19,16 @@ class BottomSheetActionWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           children: [
-            Icon(action.iconData),
+            Icon(action?.iconData),
             SizedBox(
               width: 16,
             ),
-            Text(action.title, style: TextStyle(color: action.colors))
+            Text("${action?.title}", style: TextStyle(color: action?.colors))
           ],
         ),
       ),
       onTap: () {
-        onClicks();
+        onClicks!();
 
       },
     );

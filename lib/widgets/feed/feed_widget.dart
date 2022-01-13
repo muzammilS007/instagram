@@ -7,7 +7,7 @@ import 'header_widget.dart';
 import 'info_widget.dart';
 
 class FeedWidget extends StatelessWidget {
-  final Feeds feeds;
+  final Feeds? feeds;
 
   FeedWidget({this.feeds});
 
@@ -26,10 +26,10 @@ class FeedWidget extends StatelessWidget {
 
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          HeaderWidget(feedHeaderModel:feeds.feedHeaderModel),
-          BodyWidget(feedBody: feeds.feedBody),
-          FooterWidget(feedFooterCallBacks: feeds.feedFooterCallBacks,),
-          InfoWidget(feedInfo: feeds.feedInfo,)
+          HeaderWidget(feedHeaderModel:feeds!.feedHeaderModel!),
+          BodyWidget(feedBody: feeds!.feedBody),
+          FooterWidget(feedFooterCallBacks: feeds!.feedFooterCallBacks!,),
+          InfoWidget(feedInfo: feeds!.feedInfo!,)
         ],
       ),
     );

@@ -4,7 +4,7 @@ import 'package:instagram/data/model/feedmodels/feed_header_model.dart';
 
 class HeaderWidget extends StatelessWidget {
 
-  final FeedHeaderModel feedHeaderModel;
+  final FeedHeaderModel? feedHeaderModel;
 
   HeaderWidget({@required this.feedHeaderModel});
 
@@ -22,7 +22,7 @@ class HeaderWidget extends StatelessWidget {
           //'assets/sample/ic_avatar_1.jpg'
           CircleAvatar(
             radius: 16,
-              backgroundImage : AssetImage(feedHeaderModel.profileImagePath)
+              backgroundImage : AssetImage(feedHeaderModel!.profileImagePath!)
           ),
           Expanded(
             child: Padding(
@@ -34,9 +34,9 @@ class HeaderWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   DefaultTextStyle(
-                      style: Theme.of(context).textTheme.bodyText2,
-                      child: Text(feedHeaderModel.postOwnerName),),
-                  Text('${feedHeaderModel.postLocation}', style: Theme.of(context).textTheme.caption,)
+                      style: Theme?.of(context).textTheme.bodyText2!,
+                      child: Text("${feedHeaderModel?.postOwnerName}"),),
+                  Text('${feedHeaderModel?.postLocation}', style: Theme.of(context).textTheme.caption,)
                 ],
               ),
             ),

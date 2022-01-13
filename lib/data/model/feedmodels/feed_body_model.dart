@@ -1,4 +1,4 @@
 class FeedBody{
-  String bodyimagepath;
+  String? bodyimagepath;
   FeedBody({this.bodyimagepath});
 }

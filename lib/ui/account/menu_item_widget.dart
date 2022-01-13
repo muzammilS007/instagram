@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
 class MenuItemWidget extends StatelessWidget {
-  final String title;
-  final String content;
+  final String? title;
+  final String? content;
 
   MenuItemWidget({ this.title,  this.content});
 

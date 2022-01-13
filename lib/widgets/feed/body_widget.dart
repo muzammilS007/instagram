@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram/data/model/feedmodels/feed_body_model.dart';
 
 class BodyWidget extends StatelessWidget {
-  final FeedBody feedBody;
+  final FeedBody? feedBody;
   BodyWidget({this.feedBody});
 
 
@@ -13,7 +13,7 @@ class BodyWidget extends StatelessWidget {
       //'assets/sample/search_demo1.jpg'
       aspectRatio: 1,
       child: Image.asset(
-        '${feedBody.bodyimagepath}',
+        '${feedBody?.bodyimagepath}',
         fit: BoxFit.cover,
       ),
     );

@@ -27,7 +27,7 @@ class _StoryItemWidgetState extends State<StoryItemWidget> {
                         Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [Colors.red[500], Colors.pink],
+                                colors: [Colors.red[500]!, Colors.pink],
                               )
                           ),
                           padding: EdgeInsets.all(2),

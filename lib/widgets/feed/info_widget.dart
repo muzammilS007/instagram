@@ -4,7 +4,7 @@ import 'package:instagram/data/model/feedmodels/feed_info_model.dart';
 
 
 class InfoWidget extends StatelessWidget {
-  final FeedInfo feedInfo;
+  final FeedInfo? feedInfo;
 
   InfoWidget({this.feedInfo});
 
@@ -27,10 +27,10 @@ class InfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           DefaultTextStyle(
-              style: Theme.of(context).textTheme.subtitle2.copyWith(
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
                 fontWeight: FontWeight.w800
               ),
-              child: Text('${feedInfo.noOfLikes} likes', style: Theme.of(context).textTheme.bodyText2,)),
+              child: Text('${feedInfo?.noOfLikes} likes', style: Theme.of(context).textTheme.bodyText2,)),
           Container(
             width: double.infinity,
             padding: EdgeInsets.only(
@@ -39,8 +39,8 @@ class InfoWidget extends StatelessWidget {
             child: RichText(
               text: TextSpan(
                 children: [
-                  TextSpan(text: '${feedInfo.feedInfoTitle}', style: Theme.of(context).textTheme.bodyText2),
-                  TextSpan(text: '${feedInfo.feedInfoDetail}',
+                  TextSpan(text: '${feedInfo?.feedInfoTitle}', style: Theme.of(context).textTheme.bodyText2),
+                  TextSpan(text: '${feedInfo?.feedInfoDetail}',
                       style: Theme.of(context).textTheme.bodyText1?.copyWith(
                         fontWeight: FontWeight.w400
                       )),
@@ -51,7 +51,7 @@ class InfoWidget extends StatelessWidget {
           InkWell(
             child: Container(
               child: Text(
-                'View all ${feedInfo.noOfComment} comment',
+                'View all ${feedInfo?.noOfComment} comment',
                 style: Theme.of(context).textTheme.caption,
               ),
               padding: EdgeInsets.symmetric(

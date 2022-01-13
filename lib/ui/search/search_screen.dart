@@ -8,7 +8,7 @@ import 'search_screen_viewmodel.dart';
 class SearchScreen extends StatelessWidget {
   SearchScreenViewModel _screenViewModel = SearchScreenViewModel();
 
-  SearchScreen({Key key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

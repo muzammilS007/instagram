@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TextFieldValidator {
   final TextEditingController textEditingController = TextEditingController();
-  String validate;
+  String? validate;
   dynamic extraValue;
   final bool optional;
   final toolTipKey = GlobalKey();

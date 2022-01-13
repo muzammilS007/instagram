@@ -7,7 +7,7 @@ import 'package:transparent_image/transparent_image.dart';
 import 'setting_post_screen.dart';
 
 class PostScreen extends StatelessWidget {
-  PostScreen({Key key}) : super(key: key);
+  PostScreen({Key? key}) : super(key: key);
   final List<String> imageList = [
     'https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg',
     'https://cdn.pixabay.com/photo/2020/12/15/16/25/clock-5834193__340.jpg',

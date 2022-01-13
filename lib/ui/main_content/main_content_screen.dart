@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MainContent extends StatelessWidget {
-  const MainContent({Key key}) : super(key: key);
+  const MainContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class MainContent extends StatelessWidget {
 }
 
 class MainContentScreen extends StatefulWidget {
-  const MainContentScreen({Key key}) : super(key: key);
+  const MainContentScreen({Key? key}) : super(key: key);
 
   List<Widget> _buildScreens() {
     return [

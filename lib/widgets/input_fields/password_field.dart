@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:instagram/utils/text_field_validator.dart';
 
 class PasswordCustomField extends StatelessWidget {
-  final TextFieldValidator textEditingController;
-  final String hintTxt;
+  final TextFieldValidator? textEditingController;
+  final String? hintTxt;
   const PasswordCustomField({this.textEditingController,this.hintTxt});
 
   @override
@@ -14,8 +14,8 @@ class PasswordCustomField extends StatelessWidget {
 }
 
 class PasswordField extends StatefulWidget {
-  final TextFieldValidator textEditingController;
-  final String hintTxt;
+  final TextFieldValidator? textEditingController;
+  final String? hintTxt;
    PasswordField({this.textEditingController,this.hintTxt});
 
   @override
@@ -35,15 +35,15 @@ class _PasswordFieldState extends State<PasswordField> {
     final inputBorder =
     OutlineInputBorder(borderSide: Divider.createBorderSide(context));
     return TextFormField(
-      controller: widget.textEditingController.textEditingController,
+      controller: widget.textEditingController?.textEditingController,
       decoration: InputDecoration(
         suffixIcon: IconButton(onPressed: ()=>{
           setState(() {
             showPass=!showPass;
           })
         }, icon:showPass? Icon(Icons.remove_red_eye_sharp ):Icon(Icons.remove_red_eye_outlined)),
-          errorText: widget.textEditingController.validate != null
-              ? widget.textEditingController.validate
+          errorText: widget.textEditingController?.validate != null
+              ? widget.textEditingController?.validate
               : null,
           errorBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),

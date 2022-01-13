@@ -11,7 +11,7 @@ import 'package:instagram/utils/themes.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
+Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
   final sharePref = SharePref();
   final inputBorder =
       OutlineInputBorder(borderSide: Divider.createBorderSide(context));
@@ -52,10 +52,10 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                   height: 64,
                 ),
                 TextFormField(
-                  controller: viewModel.emailOrUsername.textEditingController,
+                  controller: viewModel?.emailOrUsername.textEditingController,
                   decoration: InputDecoration(
-                    errorText: viewModel.emailOrUsername.validate != null
-                        ? viewModel.emailOrUsername.validate
+                    errorText: viewModel?.emailOrUsername.validate != null
+                        ? viewModel?.emailOrUsername.validate
                         : null,
                     errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.red)),
@@ -75,10 +75,10 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                   height: 22,
                 ),
                 TextFormField(
-                  controller: viewModel.password.textEditingController,
+                  controller: viewModel?.password.textEditingController,
                   decoration: InputDecoration(
-                      errorText: viewModel.password.validate != null
-                          ? viewModel.password.validate
+                      errorText: viewModel?.password.validate != null
+                          ? viewModel?.password.validate
                           : null,
                       errorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red)),
@@ -95,7 +95,7 @@ Widget loginUi(BuildContext context, [LoginViewModel viewModel]) {
                 ),
                 GestureDetector(
                   onTap: () => {
-                    viewModel.updateState(() => {
+                    viewModel?.updateState(() => {
                           sharePref.setLoginStatus(true),
                            MoveToDestinationAndRemoveStack(context).moveDestination(MyApp())
        /*                   Navigator.of(context).pushAndRemoveUntil(

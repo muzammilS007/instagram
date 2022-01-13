@@ -23,6 +23,7 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -36,7 +37,9 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.instagram"
@@ -71,6 +74,19 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //camera view
+    implementation 'com.otaliastudios:cameraview:2.7.0'
+
+    // Lottie Animation Library
+    implementation 'com.airbnb.android:lottie:3.4.1'
+
+    // glide for image processing
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //ripple animation
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
 
     // Add the dependency for the Firebase SDK for Google Analytics

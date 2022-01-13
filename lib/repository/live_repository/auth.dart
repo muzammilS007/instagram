@@ -6,16 +6,15 @@ class Auth {
   Future<User> handleSignInEmail(String email, String password) async {
     UserCredential result =
     await auth.signInWithEmailAndPassword(email: email, password: password);
-    final User user = result.user;
-
-    return user;
+    final User? user = result.user;
+    return user!;
   }
 
   Future<User> handleSignUp(email, password) async {
     UserCredential result = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
-    final User user = result.user;
+    final User? user = result.user;
 
-    return user;
+    return user!;
   }
 }

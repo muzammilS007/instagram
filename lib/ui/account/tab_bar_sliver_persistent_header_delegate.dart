@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 class TabBarSliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate{
   static const TAG = 'TabBarSliverPersistentHeaderDelegate';
 
-  Widget child;
+  Widget? child;
 
   TabBarSliverPersistentHeaderDelegate({ this.child});
 

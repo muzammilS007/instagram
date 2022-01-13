@@ -12,10 +12,10 @@ class SignUpViewModel with ChangeNotifier {
   //for personal info
   TextFieldValidator name = TextFieldValidator();
   TextFieldValidator location = TextFieldValidator();
-  String gender;
+  String? gender;
 
   // for user pic
-  String imagePath;
+  String? imagePath;
 
   setGender(String gender)
   {

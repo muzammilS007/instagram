@@ -6,10 +6,10 @@ import 'feed_info_model.dart';
 
 class Feeds{
 
-  FeedHeaderModel feedHeaderModel;
-  FeedFooterCallBacks feedFooterCallBacks;
-  FeedBody feedBody;
-  FeedInfo feedInfo;
+  FeedHeaderModel? feedHeaderModel;
+  FeedFooterCallBacks? feedFooterCallBacks;
+  FeedBody? feedBody;
+  FeedInfo? feedInfo;
   Feeds({this.feedHeaderModel,this.feedBody,this.feedFooterCallBacks,this.feedInfo});
 
 

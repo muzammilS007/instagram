@@ -7,7 +7,7 @@ class AppBarAccountDelegate extends SliverPersistentHeaderDelegate {
   static const TAG = 'AppBarAccount';
 
   final double topPadding;
-  final VoidCallback onShowMenu;
+  final VoidCallback? onShowMenu;
 
   AppBarAccountDelegate(this.topPadding, this.onShowMenu);
 

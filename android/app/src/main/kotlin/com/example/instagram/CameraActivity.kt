@@ -12,11 +12,11 @@ class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
-        findViewById<Button>(R.id.button).setOnClickListener {
+     /*   findViewById<Button>(R.id.button).setOnClickListener {
             val intent = Intent()
             intent.putExtra("path","image/image123")
             setResult(Activity.RESULT_OK,intent)
             finish()
-        }
+        }*/
     }
 }

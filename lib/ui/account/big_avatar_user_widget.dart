@@ -5,7 +5,7 @@ class BigAvatarUserWidget extends StatefulWidget {
   final imagePath;
   final width;
   final height;
-  final Function click;
+  final Function? click;
 
   BigAvatarUserWidget({this.imagePath, this.height, this.width, this.click});
 
@@ -41,7 +41,7 @@ class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
                 alignment: Alignment.center,
                 child: InkWell(
                   onTap: ()=>{
-                    widget.click()
+                    widget.click!()
                   },
                     child: Icon(
                   Icons.add,

@@ -17,7 +17,7 @@
         android:label="instagram">
         <activity
             android:name=".CameraActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

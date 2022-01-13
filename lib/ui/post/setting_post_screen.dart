@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'write_caption_widget.dart';
 
 class SettingPostScreen extends StatelessWidget {
-  const SettingPostScreen({Key key}) : super(key: key);
+  const SettingPostScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class SettingPostScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('New Post'),
         actions: [
-          FlatButton(
+          ElevatedButton(
               onPressed: (){
                 Navigator.popUntil(context, (route) => route.isFirst);
               },

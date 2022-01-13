@@ -7,8 +7,8 @@ import 'package:instagram/widgets/bottomsheet/bottom_sheet_action_widget.dart';
 import 'bottom_sheet_action.dart';
 
 class BottomSheetScrollable extends StatelessWidget {
-  final List<BottomSheetAction> actions;
-  final ScrollController scrollController;
+  final List<BottomSheetAction>? actions;
+  final ScrollController? scrollController;
 
   BottomSheetScrollable({this.actions, this.scrollController});
 
@@ -42,7 +42,7 @@ class BottomSheetScrollable extends StatelessWidget {
                 shrinkWrap: true,
                 controller: scrollController,
                 children: actions
-                    .map(
+                    !.map(
                       (action) => BottomSheetActionWidget(
                         action: action,
                         onClicks: () => {

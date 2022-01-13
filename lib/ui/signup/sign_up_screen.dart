@@ -1,14 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:instagram/ui/account/big_avatar_user_widget.dart';
 import 'package:instagram/ui/signup/sign_up_viewmodel.dart';
 import 'package:instagram/utils/constants.dart';
+import 'package:instagram/utils/dialog_helper.dart';
 import 'package:instagram/widgets/drop_down.dart';
 import 'package:instagram/widgets/input_fields/password_field.dart';
 import 'package:instagram/widgets/input_fields/text_field.dart';
 import 'package:stacked/stacked.dart';
-import 'dart:async';
-import 'package:flutter/services.dart';
-
 
 getNewActivity() async {
   try {
@@ -24,7 +25,7 @@ getNewActivity() async {
 class SignUpScreen extends StatelessWidget {
   final signupViewmodel = SignUpViewModel();
 
-  SignUpScreen({Key key}) : super(key: key);
+  SignUpScreen({Key? key}) : super(key: key);
   final StepperType stepperType = StepperType.vertical;
 
   @override
@@ -128,8 +129,13 @@ class SignUpScreen extends StatelessWidget {
                                     height: 100.0,
                                     width: 100.0,
                                     click: () => {
+
+                                      imagePickerDialog(context)
                                           //Todo method channel implemented here
-                                          getNewActivity()
+                                   /*       if (Platform.isAndroid)
+                                            {getNewActivity()}
+                                          else
+                                            {showMyDialog(context)}*/
                                           // MoveToDestinationAndRemoveStack(context).pushNavigation(CameraScreen()),
                                         }),
                                 Padding(

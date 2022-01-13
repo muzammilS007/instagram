@@ -7,7 +7,7 @@ import 'package:instagram/res/icons_app.dart';
 
 class FooterWidget extends StatelessWidget {
 
-  final FeedFooterCallBacks feedFooterCallBacks;
+  final FeedFooterCallBacks? feedFooterCallBacks;
 
 
   FooterWidget({@required this.feedFooterCallBacks});
@@ -19,7 +19,7 @@ class FooterWidget extends StatelessWidget {
         children: <Widget>[
           IconButton(icon: SvgPicture.asset(IconsApp.icFavorite,
             color: Colors.black), onPressed: (){
-            feedFooterCallBacks.isFvtClicked();
+            feedFooterCallBacks?.isFvtClicked!();
 
           }),
           IconButton(
@@ -27,7 +27,7 @@ class FooterWidget extends StatelessWidget {
                 IconsApp.icComment,
                 color: Colors.black,),
               onPressed: (){
-                feedFooterCallBacks.isCommentClicked();
+                feedFooterCallBacks?.isCommentClicked!();
 
 
               }),
@@ -36,13 +36,13 @@ class FooterWidget extends StatelessWidget {
                 IconsApp.icSend,
                 color: Colors.black,),
               onPressed: (){
-                feedFooterCallBacks.isSendClicked();
+                feedFooterCallBacks?.isSendClicked!();
 
               }),
           Expanded(child: Align(
             alignment: Alignment.bottomRight,
             child: IconButton(icon: Icon(Icons.bookmark_border), onPressed: (){
-              feedFooterCallBacks.isBookmarkClicked();
+              feedFooterCallBacks?.isBookmarkClicked!();
 
             }),
           ))

@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharePref {
-  SharedPreferences prefs;
+  SharedPreferences? prefs;
 
    final String LOGIN_INFO = "login_info";
 

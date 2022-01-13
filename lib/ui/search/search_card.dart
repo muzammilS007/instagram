@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'search_screen_viewmodel.dart';
 
 class SearchCard extends StatelessWidget {
-  final Function(String) reqWidget;
-  final SearchScreenViewModel screenViewModel;
-  SearchCard({Key key, this.reqWidget,this.screenViewModel}) : super(key: key);
+  final Function(String)? reqWidget;
+  final SearchScreenViewModel? screenViewModel;
+  SearchCard({Key? key, this.reqWidget,this.screenViewModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return  Card(
@@ -19,7 +19,7 @@ class SearchCard extends StatelessWidget {
         ),
         child: TextField(
           onChanged:(value) {
-            reqWidget(value);
+            reqWidget!(value);
           } ,
           /*     onSubmitted: (value) {
             reqWidget(value ?? "");
@@ -58,7 +58,7 @@ class SearchCard extends StatelessWidget {
             ),
           ),
           maxLines: 1,
-          controller: screenViewModel.searchText.textEditingController,
+          controller: screenViewModel?.searchText.textEditingController,
         ),
       ),
     );

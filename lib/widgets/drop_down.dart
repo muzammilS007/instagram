@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class DropDownCustom extends StatelessWidget {
   final defaultValue;
 
-  final List<String> items;
-  final Function(String) onClick;
+  final List<String>? items;
+  final Function(String)? onClick;
 
   DropDownCustom({this.defaultValue, this.items, this.onClick});
 
@@ -21,8 +21,8 @@ class DropDownCustom extends StatelessWidget {
 class DropDown extends StatefulWidget {
   final defaultValue;
 
-  final List<String> items;
-  final Function(String) onClick;
+  final List<String>? items;
+  final Function(String)? onClick;
 
   DropDown({this.defaultValue, this.items, this.onClick});
 
@@ -54,7 +54,7 @@ class _DropDownState extends State<DropDown> {
           elevation: 8,
           hint: Text("Gender"),
           style: TextStyle(color: Colors.black,fontSize: 16),
-          items: widget.items.map((String value) {
+          items: widget.items!.map((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -62,9 +62,9 @@ class _DropDownState extends State<DropDown> {
           }).toList(),
           onChanged: (value) {
             setState(() {
-              defaultValue = value;
+              defaultValue = value!;
             });
-            widget.onClick(value);
+            widget.onClick!(value!);
           },
         ),
       ),
