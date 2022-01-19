@@ -51,6 +51,7 @@ dependencies:
   path_provider: ^2.0.5
   bubble: ^1.2.1
   image_picker: ^0.8.4+4
+  local_image_provider: ^4.0.1
   firebase_auth:
   permission_handler:
   flutter_staggered_grid_view:
