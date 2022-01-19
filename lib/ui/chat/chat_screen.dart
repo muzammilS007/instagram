@@ -1,5 +1,7 @@
 import 'package:bubble/bubble.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram/repository/live_repository/database.dart';
 import 'package:instagram/ui/chat/chat_viewmodel.dart';
 import 'package:instagram/widgets/input_fields/text_field.dart';
 import 'package:stacked/stacked.dart';
@@ -25,6 +27,9 @@ class ChatScreen extends StatelessWidget {
       ),
       body: ViewModelBuilder<ChatViewModel>.reactive(
           viewModelBuilder: () => ChatViewModel(),
+          onModelReady: (v)=>{
+            v.listListner()
+          },
           builder: (context, viewmodel, child) {
             return Stack(
               children: [
@@ -84,3 +89,25 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
+
+/*Widget getMessageList()
+{
+  var datbase = Database();
+  return StreamBuilder<QuerySnapshot>(
+    stream: datbase.firestore?.collection('books').snapshots(),
+    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      if (!snapshot.hasData) return new Text('Loading...');
+      return new ListView(
+        children: snapshot.data?.documents.map((DocumentSnapshot document) {
+          return Bubble(
+            margin: BubbleEdges.only(top: 10),
+            alignment: Alignment.topRight,
+            nip: BubbleNip.rightTop,
+            color: Color.fromRGBO(225, 255, 199, 1.0),
+            child: Text('${displayList[index]}', textAlign: TextAlign.right),
+          );
+        }).toList(),
+      );
+    },
+  );
+}*/

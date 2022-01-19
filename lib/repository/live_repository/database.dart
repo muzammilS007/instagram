@@ -2,34 +2,37 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:instagram/data/model/messages.dart';
 import 'package:instagram/data/model/signup_model.dart';
 
 class Database {
   // static Database get to => Get.find();
 
-   FirebaseFirestore? firestore;
-   Database(){
-     firestore = FirebaseFirestore.instance;
-   }
+  FirebaseFirestore? firestore;
 
-  void firebaseDbListner(Function(bool) res)
+  Database() {
+    firestore = FirebaseFirestore.instance;
+  }
+
+  void firebaseDbListner(Function(String) res)
   {
-    CollectionReference? reference = firestore?.collection('todo_info');
+    var json ;
+    CollectionReference? reference = firestore?.collection('messages');
     reference?.snapshots().listen((querySnapshot) {
       querySnapshot.docChanges.forEach((change) {
-
-       // print("info is : ${change.doc['info']} and timedate is : ${change.doc['timedate']}");
         // Do something with change
-        res(true);
+     //   Map<String, dynamic> jsonData = json.decode(change.doc.data()) as Map<String, dynamic>;
+        print("info is ping ${change.doc.get('message')}");
+        res(change.doc.get("message"));
+      /*  print("info is : ${change.doc.get("message")}");
+        res(change.doc.get("message"));*/
       });
     });
   }
 
-  Future<void> create(String key,SignUp user) async {
+  Future<void> create(key, dynamic data, [String? mainKey]) async {
     try {
-      await firestore
-          ?.collection('todo_info')
-          .add(user.toJson());
+      await firestore?.collection(mainKey ?? 'userInfo').add(data.toJson());
     } catch (e) {
       print(e);
     }
