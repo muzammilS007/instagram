@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:instagram/ui/login/login_screen.dart';
@@ -20,6 +21,7 @@ Future<SharedPreferences?> get _prefs async {
 Future<void> main() async {
   // SharedPreferences prefs = await SharedPreferences.getInstance();
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   try {
     cameras = await availableCameras();
   } on CameraException catch (e) {

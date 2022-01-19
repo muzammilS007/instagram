@@ -93,12 +93,12 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                 GestureDetector(
                   onTap: () => {
                     viewModel?.updateState(() => {
-                          sharePref.setLoginStatus(true),
-                          MyApp().moveDestination(context)
-                          // MoveToDestinationAndRemoveStack(context).moveDestination(MyApp())
-                          /*                   Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(builder: (context) => MyApp()),
-                              (Route<dynamic> route) => false),*/
+                          viewModel.signIn((p0) => {
+
+                            sharePref.setUserId(p0["uid"][0]),
+                            sharePref.setLoginStatus(true),
+                            MyApp().moveDestination(context)
+                          })
                         })
                   },
                   child: Container(

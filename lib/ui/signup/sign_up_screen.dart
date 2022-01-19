@@ -49,10 +49,19 @@ class SignUpScreen extends StatelessWidget {
                       type: StepperType.vertical,
                       physics: ScrollPhysics(),
                       currentStep: viewmodel.currentStep,
-                      onStepTapped: (step) => {viewmodel.tapped(step)},
+                      onStepTapped: (step) => {
+                        viewmodel.tapped(step),
+                        print(step)
+                      },
                       onStepContinue: () => {
                         viewmodel.updateState(() => {
-                              viewmodel.continued(),
+                              viewmodel.continued(()=>{
+                                viewmodel.signUp((p0) => {
+                                  print("$p0")
+
+                                }),
+                                print("Finished")
+                              }),
                             })
                       },
                       onStepCancel: viewmodel.cancel,
@@ -128,11 +137,14 @@ class SignUpScreen extends StatelessWidget {
                                 BigAvatarUserWidget(
                                     height: 100.0,
                                     width: 100.0,
+                                    imagePath: viewmodel.imagePath,
                                     click: () => {
-
-                                      imagePickerDialog(context)
+                                          imagePickerDialog(
+                                              context, (path) => {
+                                            viewmodel.setImagePath(path!)
+                                          })
                                           //Todo method channel implemented here
-                                   /*       if (Platform.isAndroid)
+                                          /*       if (Platform.isAndroid)
                                             {getNewActivity()}
                                           else
                                             {showMyDialog(context)}*/

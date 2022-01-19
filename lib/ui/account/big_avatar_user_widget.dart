@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:instagram/utils/constants.dart';
 
 class BigAvatarUserWidget extends StatefulWidget {
-  final imagePath;
+  final String? imagePath;
   final width;
   final height;
   final Function? click;
@@ -23,8 +25,9 @@ class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
         children: <Widget>[
           Positioned.fill(
               child: CircleAvatar(
-            backgroundImage: AssetImage(
-                '${widget.imagePath ?? Constants.defaultAvatarPlaceholder}'),
+            radius: 45,
+            backgroundColor: Colors.grey,
+            child: ClipOval(child: setImageView(widget.imagePath)),
           )),
           Positioned(
             child: ClipOval(
@@ -40,14 +43,12 @@ class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
                 padding: EdgeInsets.all(2),
                 alignment: Alignment.center,
                 child: InkWell(
-                  onTap: ()=>{
-                    widget.click!()
-                  },
+                    onTap: () => {widget.click!()},
                     child: Icon(
-                  Icons.add,
-                  size: 12,
-                  color: Colors.white,
-                )),
+                      Icons.add,
+                      size: 12,
+                      color: Colors.white,
+                    )),
               ),
             ),
             right: 0,
@@ -56,5 +57,16 @@ class _BigAvatarUserWidgetState extends State<BigAvatarUserWidget> {
         ],
       ),
     );
+  }
+
+  setImageView(String? image) {
+    if (image != null) {
+      return Image.file(
+        File(image),
+        fit: BoxFit.fill,
+      );
+    } else {
+      return Image.asset(Constants.defaultAvatarPlaceholder);
+    }
   }
 }

@@ -1,9 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram/data/model/signup_model.dart';
 import 'package:instagram/repository/live_repository/auth.dart';
+import 'package:instagram/repository/live_repository/database.dart';
 import 'package:instagram/utils/text_field_validator.dart';
+import 'package:instagram/utils/time_helper.dart';
 
 class SignUpViewModel with ChangeNotifier {
   int currentStep = 0;
+
   // for account info
   TextFieldValidator password = TextFieldValidator();
   TextFieldValidator cPassword = TextFieldValidator();
@@ -17,14 +22,16 @@ class SignUpViewModel with ChangeNotifier {
   // for user pic
   String? imagePath;
 
-  setGender(String gender)
-  {
-    this.gender=gender;
+  //firebase firestore class
+  Database? _database;
+
+  setGender(String gender) {
+    this.gender = gender;
     notifyListeners();
   }
-  setImagePath(String imagePath)
-  {
-    this.imagePath=imagePath;
+
+  setImagePath(String imagePath) {
+    this.imagePath = imagePath;
     notifyListeners();
   }
 
@@ -33,9 +40,14 @@ class SignUpViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  continued() {
-    currentStep < 2 ? currentStep += 1 : null;
-    notifyListeners();
+  continued(Function finished) {
+    if (currentStep < 2) {
+      currentStep += 1;
+
+      notifyListeners();
+    } else {
+      finished();
+    }
   }
 
   cancel() {
@@ -70,11 +82,25 @@ class SignUpViewModel with ChangeNotifier {
     }
   }
 
-
-  void signUp()
-  {
+  void signUp(Function(String) response) {
     var auth = new Auth();
-    //auth.handleSignUp()
+    var signUp ;
+    auth
+        .handleSignUp(email.text.toString(), password.text.toString())
+        .then((value) => {
+          signUp = SignUp(
+              firstName: name.text,
+              email: email.text,
+              userId: value.uid,
+              dateTime: getCurrentTime(),
+              location: location.text
+          ),
+              _database = Database(),
+              _database?.create(
+                  value.uid,signUp
+                  ),
+              response(value.uid)
+            });
   }
 
   @override

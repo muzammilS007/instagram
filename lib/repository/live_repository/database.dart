@@ -1,15 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:instagram/data/model/signup_model.dart';
 
 class Database {
   // static Database get to => Get.find();
 
    FirebaseFirestore? firestore;
-
-  initialize() {
-    firestore = FirebaseFirestore.instance;
-  }
+   Database(){
+     firestore = FirebaseFirestore.instance;
+   }
 
   void firebaseDbListner(Function(bool) res)
   {
@@ -24,11 +25,11 @@ class Database {
     });
   }
 
-  Future<void> create(String name, String code) async {
+  Future<void> create(String key,SignUp user) async {
     try {
       await firestore
           ?.collection('todo_info')
-          .add({'info': name, 'timedate': code});
+          .add(user.toJson());
     } catch (e) {
       print(e);
     }

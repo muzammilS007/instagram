@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instagram/ui/camera/camera_screen.dart';
 import 'package:instagram/utils/navegation_helper.dart';
 import 'package:photo_view/photo_view.dart';
@@ -68,7 +69,9 @@ Future<void> showMyDialog(BuildContext context) async {
   );
 }
 
-Future<void> imagePickerDialog(BuildContext context) async {
+Future<void> imagePickerDialog(
+    BuildContext context, Function(String?) filePath) async {
+  final ImagePicker _picker = ImagePicker();
   return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -89,16 +92,25 @@ Future<void> imagePickerDialog(BuildContext context) async {
                   ),
                   Row(
                     children: [
-
                       Expanded(
                         flex: 1,
-                        child: Icon(Icons.camera).imageWithText("Camera",()=>{
-                          context.pushNavigation(CameraScreen())
-                        }),
+                        child: Icon(Icons.camera).imageWithText("Camera",
+                            () => {context.pushNavigation(CameraScreen())}),
                       ),
                       Expanded(
                         flex: 1,
-                        child: Icon(Icons.add_photo_alternate_outlined).imageWithText("Gallery",()=>{}),
+                        child: Icon(Icons.add_photo_alternate_outlined)
+                            .imageWithText(
+                                "Gallery",
+                                () => {
+                                      _picker
+                                          .pickImage(
+                                              source: ImageSource.gallery)
+                                          .then((value) => {
+                                                filePath(value?.path),
+                                                print(value?.path)
+                                              })
+                                    }),
                       ),
                     ],
                   )

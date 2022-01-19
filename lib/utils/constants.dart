@@ -24,6 +24,7 @@ class Constants {
 
   static var labelLocation="Location";
 
-
-
+  //chat Recipient
+  static var sender = 0;
+  static var receiver = 1;
 }
