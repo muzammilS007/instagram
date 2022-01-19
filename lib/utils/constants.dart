@@ -1,9 +1,15 @@
 import 'package:flutter/services.dart';
-
+import 'package:stacked/stacked_annotations.dart';
+@Singleton()
 class Constants {
 
+  static Constants? _instance;
+
+  Constants._internal();
+  factory Constants() => _instance ??= Constants._internal();
+
   //Method channel
-  static const platform = const MethodChannel("test_activity");
+  static final platform = const MethodChannel("test_activity");
 
 
   static final String appName = "Instagram";

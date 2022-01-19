@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram/main.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/ui/signup/sign_up_screen.dart';
 import 'package:instagram/utils/navegation_helper.dart';
 import 'package:instagram/utils/share_pref.dart';
-import 'package:instagram/utils/themes.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -97,8 +94,9 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                   onTap: () => {
                     viewModel?.updateState(() => {
                           sharePref.setLoginStatus(true),
-                           MoveToDestinationAndRemoveStack(context).moveDestination(MyApp())
-       /*                   Navigator.of(context).pushAndRemoveUntil(
+                          MyApp().moveDestination(context)
+                          // MoveToDestinationAndRemoveStack(context).moveDestination(MyApp())
+                          /*                   Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(builder: (context) => MyApp()),
                               (Route<dynamic> route) => false),*/
                         })
@@ -137,8 +135,9 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                 ),
                 GestureDetector(
                   onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUpScreen()))
+                    SignUpScreen().pushNavigation(context)
+                    /*          Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()))*/
                   },
                   child: Container(
                     child: Text(

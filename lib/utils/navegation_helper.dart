@@ -15,3 +15,19 @@ extension  MoveToDestinationAndRemoveStack on BuildContext{
    }
 
 }
+
+extension  MoveToDestinationAndRemoveStack1 on dynamic{
+  void moveDestination(BuildContext context)
+  {
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+    this), (Route<dynamic> route) => false);
+
+  }
+  void pushNavigation(BuildContext context)
+  {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => this));
+
+  }
+
+}
