@@ -1,7 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:instagram/ui/login/login_screen.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/utils/themes.dart';

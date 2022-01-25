@@ -14,17 +14,16 @@ class Database {
     firestore = FirebaseFirestore.instance;
   }
 
-  void firebaseDbListner(Function(String) res)
-  {
-    var json ;
+  void firebaseDbListner(Function(String) res) {
+    var json;
     CollectionReference? reference = firestore?.collection('messages');
     reference?.snapshots().listen((querySnapshot) {
       querySnapshot.docChanges.forEach((change) {
         // Do something with change
-     //   Map<String, dynamic> jsonData = json.decode(change.doc.data()) as Map<String, dynamic>;
+        //   Map<String, dynamic> jsonData = json.decode(change.doc.data()) as Map<String, dynamic>;
         print("info is ping ${change.doc.get('message')}");
         res(change.doc.get("message"));
-      /*  print("info is : ${change.doc.get("message")}");
+        /*  print("info is : ${change.doc.get("message")}");
         res(change.doc.get("message"));*/
       });
     });
