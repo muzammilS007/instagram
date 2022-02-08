@@ -17,4 +17,9 @@ class Auth {
 
     return user!;
   }
+
+   handleForgetPass(email) async {
+    return  await auth.sendPasswordResetEmail(email: email);
+
+  }
 }

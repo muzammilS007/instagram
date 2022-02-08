@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram/ui/forget_password/forget_pas_screen.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/ui/signup/sign_up_screen.dart';
@@ -126,12 +127,17 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                 SizedBox(
                   height: 12,
                 ),
-                Text(
-                  'Forgot for login details? get help signing in',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      ?.copyWith(fontSize: 10),
+                InkWell(
+                  onTap: ()=>{
+                    ForgetPassScreen().pushNavigation(context)
+                  },
+                  child: Text(
+                    'Forgot for login details? get help signing in',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        ?.copyWith(fontSize: 10),
+                  ),
                 ),
                 GestureDetector(
                   onTap: () => {

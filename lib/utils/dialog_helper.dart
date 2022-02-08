@@ -121,3 +121,26 @@ Future<void> imagePickerDialog(
         );
       });
 }
+
+Widget showErrorDialog(BuildContext context) {
+  return new AlertDialog(
+    content: SizedBox(
+      height: 200,
+      width: 200,
+      child: Column(children: [
+        Text("Error",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+
+      ],),
+    ),
+    actions: <Widget>[
+      new ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        child: const Text('Close' , style: TextStyle(color:Colors.white,),),
+      ),
+    ],
+  );
+}
+
+

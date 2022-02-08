@@ -1,14 +1,14 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:get/get.dart';
-import 'package:instagram/data/model/messages.dart';
-import 'package:instagram/data/model/signup_model.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class Database {
   // static Database get to => Get.find();
 
   FirebaseFirestore? firestore;
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   Database() {
     firestore = FirebaseFirestore.instance;
@@ -72,6 +72,28 @@ class Database {
           .update({'info': name, 'timedate': code});
     } catch (e) {
       print(e);
+    }
+  }
+
+  Future<void> uploadFileWithMetadata(String filePath) async {
+    File file = File(filePath);
+
+    // Create your custom metadata.
+    firebase_storage.SettableMetadata metadata =
+    firebase_storage.SettableMetadata(
+      cacheControl: 'max-age=60',
+      customMetadata: <String, String>{
+        'userId': 'ABC123',
+      },
+    );
+
+    try {
+      // Pass metadata to any file upload method e.g putFile.
+      await firebase_storage.FirebaseStorage.instance
+          .ref('uploads/file-to-upload.png')
+          .putFile(file, metadata);
+    } on FirebaseException catch (e) {
+      // e.g, e.code == 'canceled'
     }
   }
 }

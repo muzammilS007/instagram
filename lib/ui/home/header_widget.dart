@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:developer' as developer;
 
 import 'package:instagram/res/icons_app.dart';
+import 'package:instagram/ui/chat/chat_history_screen.dart';
 import 'package:instagram/ui/chat/chat_screen.dart';
 import 'package:instagram/utils/navegation_helper.dart';
 
@@ -29,7 +30,7 @@ class HeaderWidget extends StatelessWidget with PreferredSizeWidget {
               )),
               IconButton(icon: SvgPicture.asset(IconsApp.icSend,
                 color: Theme.of(context).colorScheme.onPrimary,), onPressed: (){
-                       ChatScreen().pushNavigation(context);
+                ChatSettingScreen().pushNavigation(context);
               })
             ],
           ),
