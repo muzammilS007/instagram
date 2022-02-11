@@ -1,8 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:instagram/utils/dialog_helper.dart';
-import 'package:instagram/utils/image_file.dart';
-import 'package:local_image_provider/device_image.dart';
 import 'package:stacked/stacked.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -46,10 +46,7 @@ class PostScreen extends StatelessWidget {
                       children: [
                         //assets/sample/search_demo1.jpg
                         Positioned.fill(
-                          child: Image.asset(
-                            'assets/sample/search_demo1.jpg',
-                            fit: BoxFit.cover,
-                          ),
+                          child: Image(image: FileImage(File(viewmodel.imageList[0])),fit: BoxFit.cover,),
                         ),
 
                         Positioned(
@@ -153,10 +150,13 @@ class PostScreen extends StatelessWidget {
                                       image: viewmodel.imageList[index],
                                       fit: BoxFit.cover,
                                     )
-                                  : Image(image: DeviceImage(viewmodel.imageList[index])),
+                                  : Image(image: FileImage(File(viewmodel.imageList[index]))),
+                             
+
                             ),
                           ),
                           onTap: () {
+                            print(viewmodel.imageList[index]);
 //                      Navigator.of(context).push(
 //                          MaterialPageRoute(builder: (context) => ExplorePage())
 //                      );

@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:local_image_provider/device_image.dart';
 import 'package:local_image_provider/local_image_provider.dart' as lip;
+import 'package:storage_path/storage_path.dart';
+
+import '../data/model/FileModel.dart';
 
 lip.LocalImageProvider imageProvider = lip.LocalImageProvider();
 
@@ -31,4 +36,32 @@ getAllImages() async {
   } else {
     print("The user has denied access to images on their device.");
   }
+}
+
+Future<List<FileModel>> getImagesPath() async{
+  var imagePath = await StoragePath.imagesPath;
+  var images = jsonDecode(imagePath) as List;
+ var files = images.map<FileModel>((e) => FileModel.fromJson(e)).toList()??List.empty();
+  if(files.length > 0){
+      return files;
+  }
+  return List.empty();
+}
+
+Future<List<String>> getTenImagesPath() async{
+  List<String> tenimages=[];
+  var imagePath = await StoragePath.imagesPath;
+  var images = jsonDecode(imagePath) as List;
+  print("images : ${images.toString()}");
+ var files = images.map<FileModel>((e) => FileModel.fromJson(e)).toList()??List.empty();
+  files.forEach((element) {
+    element.files.forEach((element) {
+
+      if(tenimages.length<10) {
+        tenimages.add(element);
+      }
+
+    });
+  });
+  return tenimages;
 }

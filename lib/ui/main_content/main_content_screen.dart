@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/ui/account/account_page.dart';
 import 'package:instagram/ui/home/home_screen.dart';
+import 'package:instagram/ui/instagram_activities/following_request_screen.dart';
 import 'package:instagram/ui/post/post_screen.dart';
 import 'package:instagram/ui/search/search_screen.dart';
 import 'package:instagram/utils/permission_helper.dart';
@@ -50,7 +50,7 @@ class MainContentScreen extends StatefulWidget {
       HomeScreen(),
       SearchScreen(),
       PostScreen(),
-      SearchScreen(),
+      FollowingRequest(),
       AccountPage(),
     ];
   }
