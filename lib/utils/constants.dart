@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked_annotations.dart';
+
 @Singleton()
 class Constants {
 
@@ -21,10 +22,12 @@ class Constants {
   static final String labelPassword="Password";
   static final String labelConfirmPassword="Confirm Password";
   static final String labelName="Name";
-
-  static var labelLocation="Location";
+  static final String labelLocation="Location";
 
   //chat Recipient
   static var sender = 0;
   static var receiver = 1;
+
+  //default avatar
+  static var avatar = "assets/sample/ic_avatar_1.jpg";
 }

@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/data/model/filemodel.dart';
 import 'package:instagram/utils/image_file.dart';
-import 'package:local_image_provider/local_image.dart';
 import 'package:multi_image_picker2/multi_image_picker2.dart';
 
-class PostViewModel with ChangeNotifier{
-
-  List<String> imageList =[];
+class PostViewModel with ChangeNotifier {
+  List<String> imageList = [];
   List<Asset> images = <Asset>[];
+  var imagPath = "";
 
-  void setImageList()
-  {
+  setImagePath(int index) {
+    imagPath = imageList[index];
+    notifyListeners();
+  }
+
+  getImagePath(){
+    return imagPath;
+  }
+
+  void setImageList() {
     getTenImagesPath().then((value) => {
-      value.forEach((element) {
-        print("images : ${element}");
+          value.forEach((element) {
+            print("images : ${element}");
 
-        imageList.add(element);
-      }),
-    });
+            imageList.add(element);
+          }),
+        });
     notifyListeners();
   }
 
@@ -26,7 +32,7 @@ class PostViewModel with ChangeNotifier{
     String error = 'No Error Detected';
 
     try {
-     return resultList = await MultiImagePicker.pickImages(
+      return resultList = await MultiImagePicker.pickImages(
         maxImages: 300,
         enableCamera: true,
         selectedAssets: images,
@@ -43,12 +49,8 @@ class PostViewModel with ChangeNotifier{
         ),
       );
     } on Exception catch (e) {
-
       error = e.toString();
       return resultList;
     }
-
   }
-
-
 }

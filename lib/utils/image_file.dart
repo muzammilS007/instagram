@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:local_image_provider/device_image.dart';
 import 'package:local_image_provider/local_image_provider.dart' as lip;
 import 'package:storage_path/storage_path.dart';
 
 import '../data/model/FileModel.dart';
+import 'constants.dart';
 
 lip.LocalImageProvider imageProvider = lip.LocalImageProvider();
 
@@ -64,4 +67,9 @@ Future<List<String>> getTenImagesPath() async{
     });
   });
   return tenimages;
+}
+
+checkImageIsValid(String path){
+  var imagefile = File(path);
+  return File(path).existsSync() ? Image(image: FileImage(imagefile),fit: BoxFit.cover,) : Image(image: AssetImage(Constants.avatar),fit: BoxFit.cover,);
 }

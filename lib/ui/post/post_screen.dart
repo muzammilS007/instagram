@@ -6,12 +6,14 @@ import 'package:instagram/utils/dialog_helper.dart';
 import 'package:stacked/stacked.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import '../../utils/image_file.dart';
 import 'post_viewmodel.dart';
 import 'setting_post_screen.dart';
 
 class PostScreen extends StatelessWidget {
   PostScreen({Key? key}) : super(key: key);
-/*  final List<dynamic> imageList = [
+
+  /*  final List<dynamic> imageList = [
     'https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg',
     'https://cdn.pixabay.com/photo/2020/12/15/16/25/clock-5834193__340.jpg',
     'https://cdn.pixabay.com/photo/2020/09/18/19/31/laptop-5582775_960_720.jpg',
@@ -46,7 +48,7 @@ class PostScreen extends StatelessWidget {
                       children: [
                         //assets/sample/search_demo1.jpg
                         Positioned.fill(
-                          child: Image(image: FileImage(File(viewmodel.imageList[0])),fit: BoxFit.cover,),
+                          child: checkImageIsValid((viewmodel.imageList.length>0) ? viewmodel.imageList[2] : ""),
                         ),
 
                         Positioned(
@@ -59,7 +61,7 @@ class PostScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              SettingPostScreen()))
+                                              SettingPostScreen(imagePath: viewmodel.getImagePath(),)))
                                 },
                                 child: Text("Next"),
                               ),
@@ -156,6 +158,8 @@ class PostScreen extends StatelessWidget {
                             ),
                           ),
                           onTap: () {
+
+                            viewmodel.setImagePath(index);
                             print(viewmodel.imageList[index]);
 //                      Navigator.of(context).push(
 //                          MaterialPageRoute(builder: (context) => ExplorePage())

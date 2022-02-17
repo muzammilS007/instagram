@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants.dart';
+
 class StoryItemWidget extends StatefulWidget {
   static const ROUTE_NAME = 'StoryItemWidget';
   @override
@@ -33,7 +35,7 @@ class _StoryItemWidgetState extends State<StoryItemWidget> {
                           padding: EdgeInsets.all(2),
                           child: CircleAvatar(
                               radius: 34,
-                              backgroundImage : AssetImage('assets/sample/ic_avatar_1.jpg')
+                              backgroundImage : AssetImage(Constants.avatar)
                           ),
                         )
                       ],

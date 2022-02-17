@@ -1,10 +1,14 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'write_caption_widget.dart';
 
 class SettingPostScreen extends StatelessWidget {
-  const SettingPostScreen({Key? key}) : super(key: key);
+
+  SettingPostScreen({this.imagePath});
+  final String? imagePath ;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,9 @@ class SettingPostScreen extends StatelessWidget {
               ),
             Divider(height: 1,),
 
-            SwitchListTile(
+
+          Image(image: FileImage(File(imagePath!)))
+    /*        SwitchListTile(
               value: false,
               onChanged: (value) {
 
@@ -69,7 +75,7 @@ class SettingPostScreen extends StatelessWidget {
               onChanged: (value) {
               },
               title: Text('Tumblr'),
-            ),
+            ),*/
           ],
         ),
       ),
