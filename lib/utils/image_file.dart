@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 
@@ -16,9 +17,11 @@ Future<List<dynamic>> getLatestImages() async {
   if (hasPermission) {
     var images = await imageProvider.findLatest(10);
     return images;
+*/
 /*    images.forEach((image) => {
       print(image.mediaType)
-    });*/
+    });*//*
+
   } else {
     print("The user has denied access to images on their device.");
     return List.empty();
@@ -73,3 +76,4 @@ checkImageIsValid(String path){
   var imagefile = File(path);
   return File(path).existsSync() ? Image(image: FileImage(imagefile),fit: BoxFit.cover,) : Image(image: AssetImage(Constants.avatar),fit: BoxFit.cover,);
 }
+*/

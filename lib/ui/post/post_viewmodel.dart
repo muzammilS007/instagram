@@ -17,13 +17,13 @@ class PostViewModel with ChangeNotifier {
   }
 
   void setImageList() {
-    getTenImagesPath().then((value) => {
+/*    getTenImagesPath().then((value) => {
           value.forEach((element) {
             print("images : ${element}");
 
             imageList.add(element);
           }),
-        });
+        });*/
     notifyListeners();
   }
 

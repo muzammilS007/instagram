@@ -6,11 +6,8 @@ import 'package:instagram/repository/local_repository/hive/entities/login_user.d
 class DbOperation{
   var path = Directory.current.path;
   var box;
+
   init() async{
    box  = await Hive.openBox('testBox');
   }
-
-
-
-
 }

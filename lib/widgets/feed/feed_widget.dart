@@ -13,24 +13,26 @@ class FeedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: Divider.createBorderSide(context)
-        )
-      ),
-      padding: EdgeInsets.only(
-          bottom: 8
-      ),
-      child: Column(
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: Divider.createBorderSide(context)
+          )
+        ),
+        padding: EdgeInsets.only(
+            bottom: 8
+        ),
+        child: Column(
 
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          HeaderWidget(feedHeaderModel:feeds!.feedHeaderModel!),
-          BodyWidget(feedBody: feeds!.feedBody),
-          FooterWidget(feedFooterCallBacks: feeds!.feedFooterCallBacks!,),
-          InfoWidget(feedInfo: feeds!.feedInfo!,)
-        ],
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            HeaderWidget(feedHeaderModel:feeds!.feedHeaderModel!),
+            BodyWidget(feedBody: feeds!.feedBody),
+            FooterWidget(feedFooterCallBacks: feeds!.feedFooterCallBacks!,),
+            InfoWidget(feedInfo: feeds!.feedInfo!,)
+          ],
+        ),
       ),
     );
   }

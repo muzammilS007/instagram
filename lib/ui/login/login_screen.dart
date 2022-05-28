@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/ui/forget_password/forget_pas_screen.dart';
 import 'package:instagram/ui/login/login_screen_viewmodel.dart';
+import 'package:instagram/ui/login/sign_in_with_google.dart';
 import 'package:instagram/ui/main_content/main_content_screen.dart';
 import 'package:instagram/ui/signup/sign_up_screen.dart';
 import 'package:instagram/utils/navegation_helper.dart';
 import 'package:instagram/utils/share_pref.dart';
 import 'package:stacked/stacked.dart';
+
+import 'authentication.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -95,11 +98,10 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                   onTap: () => {
                     viewModel?.updateState(() => {
                           viewModel.signIn((p0) => {
-
-                            sharePref.setUserId(p0["uid"][0]),
-                            sharePref.setLoginStatus(true),
-                            MyApp().moveDestination(context)
-                          })
+                                sharePref.setUserId(p0["uid"][0]),
+                                sharePref.setLoginStatus(true),
+                                MyApp().moveDestination(context)
+                              })
                         })
                   },
                   child: Container(
@@ -128,9 +130,7 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                   height: 12,
                 ),
                 InkWell(
-                  onTap: ()=>{
-                    ForgetPassScreen().pushNavigation(context)
-                  },
+                  onTap: () => {ForgetPassScreen().pushNavigation(context)},
                   child: Text(
                     'Forgot for login details? get help signing in',
                     style: Theme.of(context)
@@ -146,9 +146,25 @@ Widget loginUi(BuildContext context, [LoginViewModel? viewModel]) {
                         MaterialPageRoute(builder: (context) => SignUpScreen()))*/
                   },
                   child: Container(
-                    child: Text(
-                      'Don\'t have an account? sign up',
-                      style: Theme.of(context).textTheme.bodyText1,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Don\'t have an account? sign up',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        ElevatedButton(
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+                            onPressed: () => {
+                                  // context.pushNavigation(SignInDemo())
+                                  Authentication.signInWithGoogle(
+                                          context: context)
+                                      .then((value) => {
+                                            print(
+                                                "${value?.email} + ${value?.displayName}")
+                                          })
+                                },
+                            child: Text("Google Sign In"))
+                      ],
                     ),
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),

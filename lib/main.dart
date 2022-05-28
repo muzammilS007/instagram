@@ -29,14 +29,16 @@ Future<void> main() async {
   bool ping;
   _prefs.then((value) => {
         ping = value?.getBool(LOGIN_INFO) ?? false,
-        runApp(MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: kPrimaryColor,
-            splashColor: kPrimaryColor,
+        runApp(
+          MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: kPrimaryColor,
+              splashColor: kPrimaryColor,
+            ),
+            home: ping ? MyApp() : LoginScreen(),
           ),
-          home: ping ? MyApp() : LoginScreen(),
-        ))
+        )
       });
 }
 

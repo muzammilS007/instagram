@@ -8,7 +8,9 @@ import 'header_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreenViewModel homeScreenViewModel = HomeScreenViewModel();
-
+HomeScreen(){
+  debugPrint("re run");
+}
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                   return index==0 ? HomeStoryWidget(): FeedWidget(
                     feeds: viewmodel.getFeed(),
                   );
-                }),
+                })
           );
         });
   }

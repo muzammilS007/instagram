@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:instagram/utils/dialog_helper.dart';
 import 'package:stacked/stacked.dart';
-import 'package:transparent_image/transparent_image.dart';
+//import 'package:transparent_image/transparent_image.dart';
 
 import '../../utils/image_file.dart';
 import 'post_viewmodel.dart';
@@ -47,9 +47,9 @@ class PostScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         //assets/sample/search_demo1.jpg
-                        Positioned.fill(
+                   /*     Positioned.fill(
                           child: checkImageIsValid((viewmodel.imageList.length>0) ? viewmodel.imageList[2] : ""),
-                        ),
+                        ),*/
 
                         Positioned(
                           child: Container(
@@ -146,13 +146,13 @@ class PostScreen extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8)),
-                              child: false
+                              child:/* false
                                   ? FadeInImage.memoryNetwork(
                                       placeholder: kTransparentImage,
                                       image: viewmodel.imageList[index],
                                       fit: BoxFit.cover,
                                     )
-                                  : Image(image: FileImage(File(viewmodel.imageList[index]))),
+                                  :*/ Image(image: FileImage(File(viewmodel.imageList[index]))),
                              
 
                             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/app_context.dart';
+import 'package:instagram/res/icons_app.dart';
 import 'package:instagram/ui/account/app_bar_account.dart';
 import 'package:instagram/ui/account/tab_bar_sliver_persistent_header_delegate.dart';
 import 'package:instagram/widgets/bottomsheet/bottom_sheet_action.dart';
@@ -27,6 +28,7 @@ class _AccountPageState extends State<AccountPage> {
       context.showBottomSheet([
         BottomSheetAction(iconData: Icons.archive, title: 'Archive', id: 1),
         BottomSheetAction(iconData: Icons.show_chart, title: 'Insights', id: 2),
+        BottomSheetAction(iconData: Icons.mosque, title: 'Islam', id: 8),
         BottomSheetAction(
             iconData: Icons.history, title: 'Your activity', id: 3),
         BottomSheetAction(iconData: Icons.scanner, title: 'QR Code', id: 4),

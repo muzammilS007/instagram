@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/ui/islam/prayer_time_screen.dart';
 import 'package:instagram/ui/login/login_screen.dart';
 import 'package:instagram/utils/navegation_helper.dart';
 import 'package:instagram/utils/share_pref.dart';
@@ -104,6 +105,9 @@ class BottomSheetScrollable extends StatelessWidget {
 
           break;
         }
+      case 8:{
+        context.pushNavigation(PrayerTimeScreen());
+      }
     }
   }
 }

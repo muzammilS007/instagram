@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram/ui/search/search_card.dart';
-import 'package:transparent_image/transparent_image.dart';
+///import 'package:transparent_image/transparent_image.dart';
 
 import 'search_screen_viewmodel.dart';
 
@@ -36,7 +36,7 @@ class SearchScreen extends StatelessWidget {
 
             },
           ),
-          Expanded(child: StaggeredGridView.countBuilder(
+          /*Expanded(child: StaggeredGridView.countBuilder(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 12,
@@ -59,7 +59,7 @@ class SearchScreen extends StatelessWidget {
               },
               staggeredTileBuilder: (index) {
                 return StaggeredTile.count(1, index.isEven ? 1.2 : 1.8);
-              })),
+              })),*/
 
           /*ListView.builder(
               itemCount: 1,
